@@ -281,4 +281,36 @@ html {
   color:black;
 }
 
-
+.modal-container{
+  width:100%;
+}
+.modal_each{
+  
+    color: black;
+    font-size: 1rem;
+    font-weight: 500;
+    display: block;
+    text-decoration: none;
+    height: 4rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.15s cubic-bezier(0, 0.2, 0.5, 3);
+    position: relative;
+    border-radius: 5px;
+}
+.modal_each:hover{
+  color:black;
+  background:white;
+}
+.modal_each p{
+  margin-bottom: 0;
+}
+.modal_img{
+  width:1.75rem;
+  border-radius:5px;
+  margin-left:0.5rem;
+}

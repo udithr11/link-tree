@@ -25,75 +25,57 @@
   <body>
     
 
-  <!-- Modal -->
-<div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="shareModalLabel">Share this Bio Link</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-5">
-              <div class="qr_code_container">
-                <img src="assets/QR.svg" alt="QR_code">
-              </div>
-              
+        <!-- Modal -->
+      <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content" style="border-radius:20px">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="shareModalLabel">Share this Link Tree</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="col-md-7">
-              <div class="share-container-wrapper">
-                <a href="#" class="share-container">
-                  <div class="share-new" >
-                    <div class="share-container-inner">
-                    <img src="assets/x_logo.svg" alt="x-logo" class="share-images">
-                    </div>
-                    <p>Share on Twitter</p>
-                  </div>
-                  
-                  <img src="assets/right.svg" alt="">
-                </a>
-                <a href="#" class="share-container">
-                  <div class="share-new" >
-                    <div class="share-container-inner">
-                    <img src="assets/x_logo.svg" alt="x-logo" class="share-images">
-                    </div>
-                    <p>Share on Facebook</p>
-                  </div>
-                  
-                  <img src="assets/right.svg" alt="">
-                </a>
-                <a href="#" class="share-container">
-                  <div class="share-new" >
-                    <div class="share-container-inner">
-                    <img src="assets/x_logo.svg" alt="x-logo" class="share-images">
-                    </div>
-                    <p>Share via Mail</p>
-                  </div>
-                  
-                  <img src="assets/right.svg" alt="">
-                </a>
-              </div>
+            <div class="modal-body">
+              <?php
+            
+            $links = [
+                "Share on Snapchat" => ["https://www.snapschat.com/","assets/modal_snap.svg"],
+                "Share on Facebook" => ["https://www.facebook.com/","assets/modal_facebook.svg"],
+                "Share on LinkedIn" =>["https://www.linkedin.com/","assets/modal_linkedin.svg"],
+                "Share on X" =>["https://www.twitter.com/","assets/x_logo.svg"],
+                "Share on WhatsApp" =>["https://www.whatsapp.com/","assets/modal_whatsapp.svg"],
+                "Share on Messanger" =>["https://www.facebookmessanger.com/","assets/modal_fb.svg"],
+                "Share via Email" =>["https://www.microsoftlive.com/","assets/modal_mail.svg"],
+                
+            ];
+            ?>
+            <div class=" modal-container">
+                <?php foreach ($links as $link => $href) : ?>
+                    <a href="<?php echo $href[0]; ?>" class=" modal_each" target="_blank">
+                      <img class="modal_img" src="<?php echo $href[1]; ?>" alt="<?php echo $link; ?>">
+                      <p>
+                      <?php echo $link; ?>
+                      </p>
+                      
+                      <img class="three_img" src="assets/right.svg" alt="share">
+                      
+                    </a>
+                <?php endforeach; ?>
             </div>
-            <div class="copy-link">
-              <input type="text" id="copy_input"  readonly>
-              <div id="copy_button">Copy</div>
+                  
+                  <div class="copy-link">
+                    <input type="text" id="copy_input"  readonly>
+                    <div id="copy_button">Copy</div>
+                  </div>
+                
             </div>
-
           </div>
         </div>
       </div>
-      
-    </div>
-  </div>
-</div>
     
 
     <div class="wrapper">
       <div class="full-content">
       <div class="button-wrapper">
-      <div class="share-button" data-bs-toggle="modal" data-bs-target="#shareModal" data-link="www.selena_gomez_link_tree.com" onclick="openShareModal(event,'www.selena_gomez_link_tree.com')">
+      <div class="share-button" data-bs-toggle="modal" data-bs-target="#shareModal"  onclick="openShareModal(event,'www.selena_gomez_link_tree.com')">
         <img src="assets/three_2.svg" alt="expand">
       </div>
       </div>
@@ -104,11 +86,7 @@
       <div class="name_container">
         <p id="name">@selenagomez</p>
         <img src="assets/verified.svg" alt="" id="verified">
-
       </div>
-      
-
-
       <?php
       
       $links = [
@@ -135,7 +113,7 @@
                 <?php echo $link; ?>
                 </p>
                 
-                <img class="three_img" src="assets/three.svg" alt="share" data-bs-toggle="modal" data-bs-target="#shareModal" data-link="<?php echo $href[0]; ?>" onclick="openShareModal(event, '<?php echo $href[0]; ?>')">
+                <img class="three_img" src="assets/three.svg" alt="share" data-bs-toggle="modal" data-bs-target="#shareModal"  onclick="openShareModal(event, '<?php echo $href[0]; ?>')">
                  
               </a>
           <?php endforeach; ?>
@@ -163,12 +141,7 @@
 
       <a class="last_button"><img src="assets/logo.svg" alt=""> <p>Join selenagomez on Linktree</p> </a>
       </div>
-
-      
         <div class="background" ></div>
-      
-      
-
     </div>
 
     <script
@@ -186,23 +159,11 @@ function openShareModal(event, link) {
     var copyInput = document.getElementById('copy_input');
     
     copyInput.value = link;
-    
-    var modal = new bootstrap.Modal(shareModal);
-    modal.show();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     var shareModal = document.getElementById('shareModal');
 
-    
-    
-    shareModal.addEventListener('hidden.bs.modal', function() {
-        document.body.classList.remove('modal-open');
-        var backdrop = document.querySelector('.modal-backdrop');
-        if (backdrop) {
-            backdrop.remove();
-        }
-    });
 });
 </script>
 
@@ -217,6 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.execCommand("copy");
 
         this.textContent = "Copied";
+        
         setTimeout(() => {
           this.textContent = "Copy";
         }, 3000); 
